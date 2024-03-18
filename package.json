@@ -2,17 +2,14 @@
   "name": "node-js-tutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "1-intro.js",
+  "main": "./build/node.js",
   "scripts": {
-    "start": "node ./build/node.js",
-    "dev": "nodemon ./build/node.js"
+    "start": "nodemon ./build/node.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "cypress": "^9.2.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
