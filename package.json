@@ -5,7 +5,7 @@
   "main": "1-intro.js",
   "scripts": {
     "start": "node ./build/node.js",
-    "dev": "nodemon node.js"
+    "dev": "nodemon ./build/node.js"
   },
   "keywords": [],
   "author": "",
