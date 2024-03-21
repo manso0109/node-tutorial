@@ -4,7 +4,11 @@ const logger = require('./logger.js')
 const authorize = require('./authorize.js')
 // req => middleware => res
 
-app.use([logger , authorize])
+// 1. use vs route
+// 2. options - our own / express / thrid party
+
+// app.use([logger , authorize])
+// app.use(express.static('./public'))
 
 app.get('/' , (req,res)=> {
     res.send('Home')
@@ -14,11 +18,11 @@ app.get('/about' , (req,res)=> {
     res.send('About')
 })
 
-app.get('/api/products' , (req,res)=> {
+app.get('/api/products' ,[authorize , logger], (req,res)=> {
     res.send('Products')
 })
 
-app.get('/api/items' , (req,res)=> {
+app.get('/api/items',[authorize , logger] , (req,res)=> {
     res.send('Items')
 })
 
