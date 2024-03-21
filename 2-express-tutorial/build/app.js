@@ -1,31 +1,22 @@
 const express = require('express')
 const app = express()
-const logger = require('./logger.js')
-const authorize = require('./authorize.js')
-// req => middleware => res
+let {people} = require('./data')
 
-// 1. use vs route
-// 2. options - our own / express / thrid party
-
-// app.use([logger , authorize])
-// app.use(express.static('./public'))
-
-app.get('/' , (req,res)=> {
-    res.send('Home')
+// static assets
+app.use(express.static('./build/methods-public'))
+// pasre form data
+app.use(express.urlencoded({extended:false}))
+app.get('/api/people',(req,res)=> {
+    res.status(200).json({status:true , data:people })
 })
 
-app.get('/about' , (req,res)=> {
-    res.send('About')
+app.post('/login',(req,res) => {
+   const {name} = req.body
+   if (name){
+    return res.status(200).send('welcome '+ name)
+   }
+   res.status(401).send('Please Provide Credentials')
 })
-
-app.get('/api/products' ,[authorize , logger], (req,res)=> {
-    res.send('Products')
-})
-
-app.get('/api/items',[authorize , logger] , (req,res)=> {
-    res.send('Items')
-})
-
 
 app.listen(5000,() => {
     console.log('server is listening on port 5000 ....');
