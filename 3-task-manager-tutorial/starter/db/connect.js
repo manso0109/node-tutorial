@@ -1,2 +1,11 @@
-const connectionString = 'mongodb+srv://manso01090:dD01122371345@cluster0.2vlfqqg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const mongoose = require('mongoose')
+
+const connectDB = (url , user , pass)=> {
+    mongoose.connect(url,{
+        user:user,
+        pass: pass
+    })
+}
+
+module.exports = connectDB
 
