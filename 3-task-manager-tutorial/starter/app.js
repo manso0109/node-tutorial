@@ -5,26 +5,16 @@ const connectDB = require('./db/connect.js')
 require('dotenv').config()
 const notFound = require('./middleware/not-found.js')
 const error = require('./middleware/error-handler.js')
-const port = 3000
+const port = process.env.PORT || 3000
 // middleware
 app.use(express.static('./public'))
 app.use(express.json())
-
 app.get('/hello' , (req,res) =>{
     res.send('Task Manager App')
 })
-
 app.use('/api/v1/tasks' , tasks)
-
 app.use(notFound)
 app.use(error)
-
-// app.get('/api/v1/tasks')              -get all the tasks
-// app.post('/api/v1/tasks')             -create a new tasks
-// app.get('/api/v1/tasks/:id')          -get a single task
-// app.patch('/api/v1/tasks/:id')        -update task
-// app.get('/api/v1/tasks/:id')          -delete task
-
 const start = async () => {
     try{
         await connectDB(process.env.MONGO_URI , process.env.USER,process.env.PASS)
