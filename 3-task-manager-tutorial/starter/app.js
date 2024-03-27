@@ -5,7 +5,8 @@ const connectDB = require('./db/connect.js')
 require('dotenv').config()
 
 const port = 3000
-
+// middleware
+app.use(express.static('./public'))
 app.use(express.json())
 
 app.get('/hello' , (req,res) =>{
