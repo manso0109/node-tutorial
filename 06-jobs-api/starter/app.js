@@ -20,7 +20,7 @@ app.use(errorHandlerMiddleware);
 
 const PORT = process.env.PORT || 3000;
 
-const start = async () => {
+const START = async () => {
   try {
     app.listen(PORT, () =>
       console.log(`Server is listening on port ${PORT}...`)
@@ -30,4 +30,4 @@ const start = async () => {
   }
 };
 
-start();
+START();
