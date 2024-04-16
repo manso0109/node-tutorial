@@ -24,7 +24,14 @@ app.post(
     (req,res) => {
     const files = req.files
     console.log(files);
-    return res.json({status: 'logged' , message:'logged'})
+    Object.keys(files).forEach(key => {
+        const filePath = path.join(__dirname,'files' , files[key].name)
+
+        files[key].mv(filePath , (err)=> {
+            if(err) return res.status(500).json({status:"error",message:err})
+        })
+    })
+    return res.json({status: 'success' , message:Object.keys(files).toString()})
     }
 )
 
