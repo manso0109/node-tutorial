@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const connectDB = require('./connect')
 const session = require('express-session')
-const { default: mongoose, Collection } = require('mongoose')
 
 const MongoStore = require('connect-mongo')
 
