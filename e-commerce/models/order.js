@@ -29,4 +29,4 @@ const OrderSchema = mongoose.Schema(
         }
     },{timestamps:true}
 )
-module.exports = mongoose.model("order" ,CartSchema)
+module.exports = mongoose.model("order" ,OrderSchema)
